@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="todos">
+            <div v-for='todo in computedTodos' :key='todo.id'>
+                <input type="checkbox" v-model='todo.done'> 
+                <span> {{todo.title}} </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                todos:[
+                    {title:'아침먹기'},
+                    {title:'점심먹기'},
+                    {title:'저녁먹기'},
+                ]
+            },
+            computed:{
+                computedTodos(){
+                    return this.todos.map((todo,index)=>{
+                            return{
+                            ...todo,  //spread연산자
+                            id:index+1,
+                            done:false}
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div> {{reversedMsg}} </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'Hello Vue!',
+            },
+            computed:{
+                reversedMsg:{
+                    get:function(){
+                        return this.msg.split('').reverse().join('');
+                    },
+                    set:function(value){
+                        this.msg = value;
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

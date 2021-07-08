@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 ref='msg'>{{msg}} </h1>
+        <div ref='div'></div> 
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'Hello Vue!',
+            },
+            beforeCreate(){
+                console.log('BeforeCreate!',this.msg);
+            },
+            created(){
+                console.log('Created',this.msg);
+            },
+            beforeMount(){
+                console.log('BeforeMount!',this.$refs.div);
+            },
+            mounted(){
+                console.log('Mounted',this.$refs.div);
+            },
+            beforeUpdate(){
+                console.log('beforeUpdate!',this.$refs.msg.innerText)
+            },
+            updated(){
+                console.log('Updated',this.$refs.msg.innerText)
+            },
+            beforeDestroy(){
+                console.log('beforeDestroy!');
+            },
+            destroyed(){
+                console.log('Destroyed');
+            }
+        })
+    </script>
+</body>
+</html>
